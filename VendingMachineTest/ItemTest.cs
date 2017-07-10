@@ -1,4 +1,5 @@
 using System;
+using VendingMachine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace VendingMachineTest
@@ -7,8 +8,10 @@ namespace VendingMachineTest
     public class ItemTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ItemHasName()
         {
+			Item water = new Item("water", 0.50);
+			Assert.AreEqual("water", water.Name);
         }
     }
 }
