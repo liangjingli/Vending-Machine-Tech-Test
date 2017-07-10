@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace VendingMachine
@@ -7,36 +8,22 @@ namespace VendingMachine
     public class CoinManager
     {
 		public static Coin[] ValidUserCoins = { new Coin(0.50) };
-		private List<Coin> _coinsToReturn = new List<Coin>();
-		private List<Coin> _userCoins = new List<Coin>();
-		private List<Coin> _coinStock = new List<Coin>{ new Coin(0.20),
-														new Coin(0.10),
-														new Coin(0.10),
-														new Coin(0.20),
-														new Coin(0.20) };
 
-		public List<Coin> UserCoins
-		{
-			get { return _userCoins; }
-			set { _userCoins = value; }
-		}
-
-		public List<Coin> CoinsToReturn
-		{
-			get { return _coinsToReturn; }
-			set { _coinsToReturn = value; }
-		}
-
-		public List<Coin> CoinStock
-		{
-			get { return _coinStock; }
-			set { _coinStock = value; }
-		}
+		public List<Coin> UserCoins { get; set; }
+		public List<Coin> CoinsToReturn { get; set; }
+		public List<Coin> CoinStock { get; set; }
 
 		public CoinManager()
 		{
-			this.CoinStock = CoinStock;
-			this.UserCoins = UserCoins;
+			List<Coin> coinStock = new List<Coin> { new Coin(0.20),
+													new Coin(0.10),
+													new Coin(0.10),
+													new Coin(0.20),
+													new Coin(0.20)
+			};
+			CoinStock = coinStock;
+			UserCoins = new List<Coin>();
+			CoinsToReturn = new List<Coin>();
 		}
 
 		public void Insert(Coin coin)
@@ -48,7 +35,24 @@ namespace VendingMachine
 			UserCoins.Add(coin);
 		}
 
+		public double RemainderFromUserCoins(double price)
+		{
+			double Remainder;
+			while (true)
+			{
+				Remainder = price - UserCoins.First().Value;
+				Coin coin = UserCoins.First();
+				UserCoins.RemoveAt(0);
+				CoinStock.Add(coin);
+				
+				if (Remainder < 0)
+				{
+					break;
+				}
 
+			}
+			return Remainder;
+		}
 
 		private bool IsValid(Coin PassedCoin)
 		{
