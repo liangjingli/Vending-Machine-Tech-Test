@@ -7,6 +7,7 @@ namespace VendingMachine
     public class CoinManager
     {
 		public static Coin[] ValidUserCoins = { new Coin(0.50) };
+		private List<Coin> _coinsToReturn = new List<Coin>();
 		private List<Coin> _userCoins = new List<Coin>();
 		private List<Coin> _coinStock = new List<Coin>{ new Coin(0.20),
 														new Coin(0.10),
@@ -18,6 +19,12 @@ namespace VendingMachine
 		{
 			get { return _userCoins; }
 			set { _userCoins = value; }
+		}
+
+		public List<Coin> CoinsToReturn
+		{
+			get { return _coinsToReturn; }
+			set { _coinsToReturn = value; }
 		}
 
 		public List<Coin> CoinStock
@@ -40,6 +47,8 @@ namespace VendingMachine
 			}
 			UserCoins.Add(coin);
 		}
+
+
 
 		private bool IsValid(Coin PassedCoin)
 		{

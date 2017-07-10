@@ -24,6 +24,13 @@ namespace VendingMachineTest
 		}
 
 		[TestMethod]
+		public void HasListForChangeCoinsToReturn()
+		{
+			CoinManager coinManager = new CoinManager();
+			Assert.IsInstanceOfType(coinManager.CoinsToReturn, typeof(List<Coin>));
+		}
+
+		[TestMethod]
 		public void CoinsCanBeAddedByInsertFunction()
 		{
 			CoinManager coinManager = new CoinManager();
