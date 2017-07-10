@@ -18,5 +18,10 @@ namespace VendingMachine
 		{
 			this.UserCoins = UserCoins;
 		}
+
+		public void Insert(Coin coin)
+		{
+			UserCoins.Add(coin);
+		}
     }
 }
