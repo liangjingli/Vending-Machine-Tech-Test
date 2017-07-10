@@ -10,16 +10,20 @@ namespace VendingMachineTest
         [TestMethod]
         public void ItemHasName()
         {
-			Item water = new Item("water", 0.50);
-			Assert.AreEqual("water", water.Name);
+			string ItemName = "water";
+			double ItemPrice = 0.50;
+			Item water = new Item(ItemName, ItemPrice);
+			Assert.AreEqual(ItemName, water.Name);
         }
 
 		[TestMethod]
 		public void ItemHasPrice()
 		{
-			Item water = new Item("water", 0.50);
+			string ItemName = "water";
+			double ItemPrice = 0.50;
+			Item water = new Item(ItemName, ItemPrice);
 			Console.WriteLine(water.Price);
-			Assert.AreEqual(0.50, water.Price);
+			Assert.AreEqual(ItemPrice, water.Price);
 		}
 	}
 }
