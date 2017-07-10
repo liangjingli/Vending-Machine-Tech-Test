@@ -13,5 +13,13 @@ namespace VendingMachineTest
 			Item water = new Item("water", 0.50);
 			Assert.AreEqual("water", water.Name);
         }
-    }
+
+		[TestMethod]
+		public void ItemHasPrice()
+		{
+			Item water = new Item("water", 0.50);
+			Console.WriteLine(water.Price);
+			Assert.AreEqual(0.50, water.Price);
+		}
+	}
 }
