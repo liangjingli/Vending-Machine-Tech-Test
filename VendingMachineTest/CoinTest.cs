@@ -14,5 +14,24 @@ namespace VendingMachineTest
 			Coin ValidCoin = new Coin(CoinValue);
 			Assert.AreEqual(CoinValue, ValidCoin.Value);
 		}
+
+		[TestMethod]
+		public void RaiseErrorWithInvalidValue()
+		{
+			try {
+				double CoinValue = 0.7;
+				Coin InvalidCoin = new Coin(CoinValue);
+				Assert.Fail();
+			}
+			catch (Exception ex)
+			{
+				Assert.IsTrue(ex is ArgumentException);
+			}
+		}
+
+
+	
 	}
+
+	
 }
