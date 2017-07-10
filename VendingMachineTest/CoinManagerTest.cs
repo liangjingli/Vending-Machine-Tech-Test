@@ -17,6 +17,13 @@ namespace VendingMachineTest
 		}
 
 		[TestMethod]
+		public void HasStockedCoinsOfDifferentValues()
+		{
+			CoinManager coinManager = new CoinManager();
+			Assert.IsInstanceOfType(coinManager.CoinStock, typeof(List<Coin>));
+		}
+
+		[TestMethod]
 		public void CoinsCanBeAddedByInsertFunction()
 		{
 			CoinManager coinManager = new CoinManager();

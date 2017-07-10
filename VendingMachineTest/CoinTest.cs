@@ -20,7 +20,8 @@ namespace VendingMachineTest
 		{
 			double CoinValue = 0.7;
 
-			try {
+			try
+			{
 				Coin InvalidCoin = new Coin(CoinValue);
 				Assert.Fail();
 			}
