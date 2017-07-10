@@ -18,8 +18,9 @@ namespace VendingMachineTest
 		[TestMethod]
 		public void RaiseErrorWithInvalidValue()
 		{
+			double CoinValue = 0.7;
+
 			try {
-				double CoinValue = 0.7;
 				Coin InvalidCoin = new Coin(CoinValue);
 				Assert.Fail();
 			}

@@ -25,5 +25,22 @@ namespace VendingMachineTest
 			coinManager.Insert(FiftyPence);
 			Assert.IsTrue(UserCoins.Contains(FiftyPence));
 		}
+
+		[TestMethod]
+		public void ThrowsErrorWhenInsertedNonValidCoin()
+		{
+			CoinManager coinManager = new CoinManager();
+			Coin NonValidUserCoin = new Coin(0.20);
+			try
+			{
+				coinManager.Insert(NonValidUserCoin);
+				Assert.Fail();
+			}
+			catch (Exception ex)
+			{
+				Assert.IsTrue(ex is ArgumentException);
+			}
+		
+		}
 	}
 }
