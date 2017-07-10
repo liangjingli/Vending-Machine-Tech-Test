@@ -35,7 +35,7 @@ namespace VendingMachineTest
 		{
 			CoinManager coinManager = new CoinManager();
 			List<Coin> UserCoins = coinManager.UserCoins;
-			Coin FiftyPence = new Coin(0.50);
+			Coin FiftyPence = new Coin(50);
 			coinManager.Insert(FiftyPence);
 			Assert.IsTrue(UserCoins.Contains(FiftyPence));
 		}
@@ -44,7 +44,7 @@ namespace VendingMachineTest
 		public void ThrowsErrorWhenInsertedNonValidCoin()
 		{
 			CoinManager coinManager = new CoinManager();
-			Coin NonValidUserCoin = new Coin(0.20);
+			Coin NonValidUserCoin = new Coin(20);
 			try
 			{
 				coinManager.Insert(NonValidUserCoin);

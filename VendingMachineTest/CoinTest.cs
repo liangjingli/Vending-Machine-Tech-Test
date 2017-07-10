@@ -10,7 +10,7 @@ namespace VendingMachineTest
 		[TestMethod]
 		public void CanBeCreatedWithCorrectValue()
 		{
-			double CoinValue = 0.50;
+			double CoinValue = 50;
 			Coin ValidCoin = new Coin(CoinValue);
 			Assert.AreEqual(CoinValue, ValidCoin.Value);
 		}
@@ -18,7 +18,7 @@ namespace VendingMachineTest
 		[TestMethod]
 		public void RaiseErrorWithInvalidValue()
 		{
-			double CoinValue = 0.7;
+			double CoinValue = 70;
 
 			try
 			{
