@@ -14,12 +14,19 @@ namespace VendingMachineProject
 		};
 
 		public List<Item> ItemStock { get; private set; }
-		public CoinManager CoinManger { get; set; }
+		public CoinManager VendorCoinManger { get; set; }
 
 		public VendingMachine()
 		{
 			ItemStock = itemStock;
-			CoinManger = new CoinManager();
+			VendorCoinManger = new CoinManager();
+		}
+
+		public void Insert(Coin coin)
+		{
+			VendorCoinManger.Insert(coin);
+			double PoundFormat = coin.Value / 100;
+			Console.WriteLine("You Have Inserted £{0:0.00}", PoundFormat);
 		}
 	}
 }
