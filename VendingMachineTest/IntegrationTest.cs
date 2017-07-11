@@ -20,6 +20,7 @@ namespace VendingMachineProjectTest
 		public void InsertingCoins()
 		{
 			VendingMachine vendingMachine = new VendingMachine();
+			vendingMachine.Select("water");
 			Coin FiftyPence = new Coin(50);
 			vendingMachine.Insert(FiftyPence);
 			List<Coin> UserCoins = vendingMachine.VendorCoinManger.UserCoins;
