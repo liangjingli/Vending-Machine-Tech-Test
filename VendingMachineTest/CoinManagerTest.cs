@@ -1,10 +1,10 @@
 ﻿using System;
-using VendingMachine;
+using VendingMachineProject;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VendingMachineTest
+namespace VendingMachineProjectTest
 {
 
 	[TestClass]

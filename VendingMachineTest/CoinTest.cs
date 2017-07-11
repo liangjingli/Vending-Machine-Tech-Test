@@ -1,8 +1,8 @@
 ﻿using System;
-using VendingMachine;
+using VendingMachineProject;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace VendingMachineTest
+namespace VendingMachineProjectTest
 {
 	[TestClass]
 	public class CoinTest
