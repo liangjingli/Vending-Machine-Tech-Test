@@ -36,23 +36,33 @@ namespace VendingMachine
 			UserCoins.Add(coin);
 		}
 
-		public double RemainderFromUserCoins(double price)
+		public void GiveChange(double price)
 		{
-			double Remainder;
-			while (true)
+			double Remainder = RemainderFromUserCoins(price);
+			int NumberOfCoinsToRemove = 0;
+			foreach (Coin coin in CoinStock)
 			{
-				Console.WriteLine(UserCoins.Count);
-				Remainder = price - UserCoins[0].Value;
-				Coin coin = UserCoins[0];
-				UserCoins.RemoveAt(0);
-				CoinStock.Add(coin);
-				
-				if (Remainder < 0 || UserCoins.Count == 0)
+				if (-Remainder >= coin.Value)
 				{
-					break;
+					Remainder += coin.Value;
+					CoinsToReturn.Add(coin);
+					NumberOfCoinsToRemove++;
 				}
-
 			}
+			CoinStock.RemoveRange(0, NumberOfCoinsToRemove);
+		}
+
+		private double RemainderFromUserCoins(double price)
+		{
+			double Remainder = 0;
+			double totalCoins = 0;
+			foreach (Coin coin in UserCoins)
+			{
+				Remainder = price - totalCoins - coin.Value;
+				totalCoins += coin.Value;
+			}
+			CoinStock.AddRange(UserCoins);
+			UserCoins.Clear();
 			return Remainder;
 		}
 
