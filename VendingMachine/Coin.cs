@@ -7,7 +7,7 @@ namespace VendingMachine
 {
     public class Coin
     {
-		public virtual double Value { get; private set; }
+		public double Value { get; private set; }
 		public static double[] Denominations = { 1, 2, 5, 10, 20, 50, 100, 200 };
 
 		public Coin(double Value)
