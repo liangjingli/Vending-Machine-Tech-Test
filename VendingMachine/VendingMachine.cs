@@ -28,10 +28,7 @@ namespace VendingMachineProject
 		public void Insert(Coin coin)
 		{
 			VendorCoinManger.Insert(coin);
-			double PoundFormat = coin.Value / 100;
-			double UserCoinsTotal = TotalOfUserCoins(VendorCoinManger.UserCoins) / 100;
-			Console.WriteLine("You Have Inserted £{0:0.00}", PoundFormat);
-			Console.WriteLine("Your Total £{0:0.00}", UserCoinsTotal);
+			DisplayUserCoins(coin);
 		}
 
 		public void DisplayItems()
@@ -44,16 +41,49 @@ namespace VendingMachineProject
 			}
 		}
 
-		//public void Select(string itemName)
-		//{
-		//	foreach (Item item in )
-		//}
-		
-		   
+		public void Select(string itemName)
+		{
+			FindItemWithName(itemName);
+
+		}
+
+		private void FindItemWithName(string itemName)
+		{
+			Item ItemToRemove = null;
+			foreach (Item item in ItemStock)
+			{
+				if (item.Name == itemName)
+				{
+					ItemToRemove = item;
+					Selection.Add(item);
+					break;
+				}
+			}
+
+			if (ItemToRemove != null)
+			{
+				ItemStock.Remove(ItemToRemove);
+			}
+		}
+
+
 		private double TotalOfUserCoins(List<Coin> coinList)
 		{
 			return coinList.Sum(coin => coin.Value);
 		}
+
+		private void DisplayUserCoins(Coin coin)
+		{
+			double PoundFormat = coin.Value / 100;
+			double UserCoinsTotal = TotalOfUserCoins(VendorCoinManger.UserCoins) / 100;
+			Console.WriteLine("You Have Inserted £{0:0.00}", PoundFormat);
+			Console.WriteLine("Your Total £{0:0.00}", UserCoinsTotal);
+		}
+
+		//private void CalculatePrice()
+		//{
+		//	double TotalPrice = Selection.Sum(item => item.Price);
+		//}
 
 	}
 }
