@@ -77,5 +77,10 @@ namespace VendingMachineProject
 			}
 			return Valid;
 		}
+
+		public double UserCoinsTotal()
+		{
+			return UserCoins.Sum(coin => coin.Value);
+		}
 	}
 }

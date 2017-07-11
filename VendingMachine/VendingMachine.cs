@@ -70,16 +70,10 @@ namespace VendingMachineProject
 			}
 		}
 
-
-		private double TotalOfUserCoins(List<Coin> coinList)
-		{
-			return coinList.Sum(coin => coin.Value);
-		}
-
 		private void DisplayUserCoins(Coin coin)
 		{
 			double PoundFormat = coin.Value / 100;
-			double UserCoinsTotal = TotalOfUserCoins(VendorCoinManger.UserCoins) / 100;
+			double UserCoinsTotal = VendorCoinManger.UserCoinsTotal() / 100;
 			Console.WriteLine("You Have Inserted £{0:0.00}", PoundFormat);
 			Console.WriteLine("Your Total £{0:0.00}", UserCoinsTotal);
 		}
@@ -87,7 +81,7 @@ namespace VendingMachineProject
 		private void CalculateCoinsToPay()
 		{
 			double TotalPrice = Selection.Sum(item => item.Price);
-			double UserCoinsTotal = TotalOfUserCoins(VendorCoinManger.UserCoins);
+			double UserCoinsTotal = VendorCoinManger.UserCoinsTotal();
 			double CoinsToPay = Math.Ceiling(TotalPrice / UserCoinsTotal) - 1;
 
 			Console.WriteLine("Please Insert {0} more coin(s) To Complete purchase", CoinsToPay);

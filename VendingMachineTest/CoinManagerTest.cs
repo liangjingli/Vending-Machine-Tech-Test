@@ -64,7 +64,7 @@ namespace VendingMachineProjectTest
 			CoinManager CoinManager1 = new CoinManager();
 			CoinManager1.Insert(new Coin(50));
 			CoinManager1.Insert(new Coin(50));
-			double TotalOfUserCoins = CoinManager1.UserCoins.Sum(coin => coin.Value);
+			double TotalOfUserCoins = CoinManager1.UserCoinsTotal();
 			double PriceOfTotalItems = 60;
 			CoinManager1.GiveChange(PriceOfTotalItems);
 			double ExpectedChange = TotalOfUserCoins - PriceOfTotalItems;
@@ -86,6 +86,7 @@ namespace VendingMachineProjectTest
 			Assert.IsTrue(CoinStock.Contains(FiftyPence1));
 			Assert.IsTrue(CoinStock.Contains(FiftyPence2));
 		}
+
 
 	}
 }
