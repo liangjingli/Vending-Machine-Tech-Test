@@ -34,8 +34,9 @@ namespace VendingMachineProject
 			UserCoins.Add(coin);
 		}
 
-		public void GiveChange(double price)
+		public double GiveChange(double price)
 		{
+			if (price == UserCoinsTotal()) return 0;
 			double Remainder = RemainderFromUserCoins(price);
 			int NumberOfCoinsToRemove = 0;
 			foreach (Coin coin in CoinStock)
@@ -48,6 +49,7 @@ namespace VendingMachineProject
 				}
 			}
 			CoinStock.RemoveRange(0, NumberOfCoinsToRemove);
+			return ChangeTotal();
 		}
 
 		private double RemainderFromUserCoins(double price)
@@ -81,6 +83,11 @@ namespace VendingMachineProject
 		public double UserCoinsTotal()
 		{
 			return UserCoins.Sum(coin => coin.Value);
+		}
+
+		private double ChangeTotal()
+		{
+			return CoinsToReturn.Sum(coin => coin.Value);
 		}
 	}
 }

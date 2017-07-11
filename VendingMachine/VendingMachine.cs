@@ -17,12 +17,14 @@ namespace VendingMachineProject
 		public List<Item> ItemStock { get; private set; }
 		public List<Item> Selection { get; private set; }
 		public CoinManager VendorCoinManger { get; set; }
+		public bool SufficientPayment { get; set; }
 
 		public VendingMachine()
 		{
 			ItemStock = itemStock;
 			Selection = new List<Item>();
 			VendorCoinManger = new CoinManager();
+			SufficientPayment = false;
 		}
 
 		public void Insert(Coin coin)
@@ -30,7 +32,8 @@ namespace VendingMachineProject
 			VendorCoinManger.Insert(coin);
 			DisplayUserCoins(coin);
 			CalculateCoinsToPay();
-
+			double TotalPrice = SelectionTotalPrice();
+			Vend(TotalPrice);
 		}
 
 		public void DisplayItems()
@@ -78,13 +81,39 @@ namespace VendingMachineProject
 			Console.WriteLine("Your Total £{0:0.00}", UserCoinsTotal);
 		}
 
+		public void DisplayItemsInSelection()
+		{
+			int WaterCount = Selection.Count(item => item.Name == "water");
+			int CrispCount = Selection.Count(item => item.Name == "crisps");
+			Console.WriteLine("Your Items(s):");
+			if (WaterCount > 0) Console.WriteLine("{0}x water", WaterCount);
+			if (CrispCount > 0) Console.WriteLine("{0}x crisps", CrispCount);
+		}
+
 		private void CalculateCoinsToPay()
 		{
-			double TotalPrice = Selection.Sum(item => item.Price);
+			double TotalPrice = SelectionTotalPrice();
 			double UserCoinsTotal = VendorCoinManger.UserCoinsTotal();
 			double CoinsToPay = Math.Ceiling(TotalPrice / UserCoinsTotal) - 1;
+			if (CoinsToPay <= 0) SufficientPayment = true;
+			if (CoinsToPay > 0) Console.WriteLine("Please Insert {0} more coin(s) To Complete purchase", CoinsToPay);
+		}
 
-			Console.WriteLine("Please Insert {0} more coin(s) To Complete purchase", CoinsToPay);
+		public void Vend(double price)
+		{
+			if (SufficientPayment)
+			{
+				double Change = VendorCoinManger.GiveChange(price) / 100;
+				VendorCoinManger.CoinsToReturn.Clear();
+				DisplayItemsInSelection();
+				Selection.Clear();
+				Console.WriteLine("Your Change: £{0:0.00}", Change);
+			}
+		}
+
+		private double SelectionTotalPrice()
+		{
+			return Selection.Sum(item => item.Price);
 		}
 
 	}
