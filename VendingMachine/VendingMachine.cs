@@ -29,6 +29,8 @@ namespace VendingMachineProject
 		{
 			VendorCoinManger.Insert(coin);
 			DisplayUserCoins(coin);
+			CalculateCoinsToPay();
+
 		}
 
 		public void DisplayItems()
@@ -44,7 +46,8 @@ namespace VendingMachineProject
 		public void Select(string itemName)
 		{
 			FindItemWithName(itemName);
-
+			double TotalPrice = Selection.Sum(item => item.Price) / 100;
+			Console.WriteLine("Total Price £{0:0.00}", TotalPrice);
 		}
 
 		private void FindItemWithName(string itemName)
@@ -55,6 +58,7 @@ namespace VendingMachineProject
 				if (item.Name == itemName)
 				{
 					ItemToRemove = item;
+					Console.WriteLine("You Have Selected {0}", item.Name);
 					Selection.Add(item);
 					break;
 				}
@@ -80,10 +84,14 @@ namespace VendingMachineProject
 			Console.WriteLine("Your Total £{0:0.00}", UserCoinsTotal);
 		}
 
-		//private void CalculatePrice()
-		//{
-		//	double TotalPrice = Selection.Sum(item => item.Price);
-		//}
+		private void CalculateCoinsToPay()
+		{
+			double TotalPrice = Selection.Sum(item => item.Price);
+			double UserCoinsTotal = TotalOfUserCoins(VendorCoinManger.UserCoins);
+			double CoinsToPay = Math.Ceiling(TotalPrice / UserCoinsTotal) - 1;
+
+			Console.WriteLine("Please Insert {0} more coin(s) To Complete purchase", CoinsToPay);
+		}
 
 	}
 }
