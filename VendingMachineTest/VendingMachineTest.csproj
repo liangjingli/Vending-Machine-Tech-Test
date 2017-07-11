@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VendingMachine\VendingMachineProject.csproj" />
+    <ProjectReference Include="..\VendingMachine\VendingMachine.csproj" />
   </ItemGroup>
 
   <ItemGroup>

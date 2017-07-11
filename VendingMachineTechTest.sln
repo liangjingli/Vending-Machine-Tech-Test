@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingMachineProject", "VendingMachine\VendingMachineProject.csproj", "{8D924CE0-B945-492E-BE53-DBB6488BCA0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingMachine", "VendingMachine\VendingMachine.csproj", "{8D924CE0-B945-492E-BE53-DBB6488BCA0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "VendingMachineTest\Tests.csproj", "{FA7E9744-9495-4FAD-A892-53B539117F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingMachineTest", "VendingMachineTest\VendingMachineTest.csproj", "{FA7E9744-9495-4FAD-A892-53B539117F00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
