@@ -28,7 +28,6 @@ namespace VendingMachine
 
 		public void Insert(Coin coin)
 		{
-			Console.WriteLine(UserCoins.Count);
 			if (!IsValid(coin))
 			{
 				throw new ArgumentException("Only accpets 50p coins");
