@@ -21,4 +21,10 @@ Before I started coding I drew a simple rudimentary class diagram. I thought abo
 
 #### Tests
 On the menu bar, select Test > Run > All Tests.
-![Imgur](http://i.imgur.com/rYCqsvg.png)
+
+#### C# Interactive Example
+
+To run code in C# Interactive:
+Select each class Individually > Right Click > Execute in Interactive
+
+![Imgur](http://i.imgur.com/7nfeBTN.png)
