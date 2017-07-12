@@ -8,12 +8,6 @@ namespace VendingMachineProject
 
     public class VendingMachine
     {
-		public static List<Item> itemStock = new List<Item> { new Item("water", 60),
-															  new Item("water", 60),
-															  new Item("crisps", 40),
-															  new Item("crisps", 40)
-		};
-
 		public List<Item> ItemStock { get; private set; }
 		public List<Item> Selection { get; private set; }
 		public CoinManager VendorCoinManger { get; set; }
@@ -21,6 +15,14 @@ namespace VendingMachineProject
 
 		public VendingMachine()
 		{
+			List<Item> itemStock = new List<Item> { new Item("water", 60),
+													new Item("water", 60),
+													new Item("water", 60),
+													new Item("crisps", 40),
+													new Item("crisps", 40),
+													new Item("crisps", 40)
+			};
+
 			ItemStock = itemStock;
 			Selection = new List<Item>();
 			VendorCoinManger = new CoinManager();
@@ -31,6 +33,7 @@ namespace VendingMachineProject
 		{
 			VendorCoinManger.Insert(coin);
 			DisplayUserCoins(coin);
+			Console.WriteLine("Total Price £{0:0.00}", SelectionTotalPrice() / 100);
 			CalculateCoinsToPay();
 			double TotalPrice = SelectionTotalPrice();
 			Vend(TotalPrice);
@@ -64,7 +67,7 @@ namespace VendingMachineProject
 					Console.WriteLine("You Have Selected {0}", item.Name);
 					Selection.Add(item);
 					break;
-				}
+				} 
 			}
 
 			if (ItemToRemove != null)
@@ -78,7 +81,7 @@ namespace VendingMachineProject
 			double PoundFormat = coin.Value / 100;
 			double UserCoinsTotal = VendorCoinManger.UserCoinsTotal() / 100;
 			Console.WriteLine("You Have Inserted £{0:0.00}", PoundFormat);
-			Console.WriteLine("Your Total £{0:0.00}", UserCoinsTotal);
+			Console.WriteLine("Total Paid £{0:0.00}", UserCoinsTotal);
 		}
 
 		public void DisplayItemsInSelection()
@@ -94,9 +97,9 @@ namespace VendingMachineProject
 		{
 			double TotalPrice = SelectionTotalPrice();
 			double UserCoinsTotal = VendorCoinManger.UserCoinsTotal();
-			double CoinsToPay = Math.Ceiling(TotalPrice / UserCoinsTotal) - 1;
+			double CoinsToPay = Math.Floor(TotalPrice / UserCoinsTotal);
 			if (CoinsToPay <= 0) SufficientPayment = true;
-			if (CoinsToPay > 0) Console.WriteLine("Please Insert {0} more coin(s) To Complete purchase", CoinsToPay);
+			if (CoinsToPay > 0) Console.WriteLine("Please Insert more coins To Complete purchase");
 		}
 
 		public void Vend(double price)
@@ -109,6 +112,7 @@ namespace VendingMachineProject
 				Selection.Clear();
 				Console.WriteLine("Your Change: £{0:0.00}", Change);
 			}
+			SufficientPayment = false;
 		}
 
 		private double SelectionTotalPrice()

@@ -8,18 +8,21 @@ namespace VendingMachineProject
     public class CoinManager
     {
 		public static Coin[] ValidUserCoins = { new Coin(50) };
-		public static List<Coin> coinStock = new List<Coin>{ new Coin(20),
-															 new Coin(10),
-															 new Coin(10),
-															 new Coin(20),
-															 new Coin(20)
-		};
+
 		public List<Coin> UserCoins { get; private set; }
 		public List<Coin> CoinsToReturn { get; private set; }
 		public List<Coin> CoinStock { get; set; }
 
 		public CoinManager()
 		{
+			List<Coin> coinStock = new List<Coin> { new Coin(20),
+													new Coin(10),
+													new Coin(10),
+													new Coin(20),
+													new Coin(20),
+													new Coin(10),
+													new Coin(10)
+			};
 			CoinStock = coinStock;
 			UserCoins = new List<Coin>();
 			CoinsToReturn = new List<Coin>();
