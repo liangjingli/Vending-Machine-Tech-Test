@@ -28,3 +28,38 @@ To run code in C# Interactive:
 Select each class Individually > Right Click > Execute in Interactive
 
 ![Imgur](http://i.imgur.com/7nfeBTN.png)
+Once you have executed all classes in Interactive you can use code as follows:
+```
+> VendingMachine OfficeVendingMachine = new VendingMachine();
+> OfficeVendingMachine.DisplayItems();
+Name       Price
+water       £0.60
+water       £0.60
+water       £0.60
+crisps       £0.40
+crisps       £0.40
+crisps       £0.40
+> OfficeVendingMachine.Select("water");
+You Have Selected water
+Total Price £0.60
+> OfficeVendingMachine.Select("water");
+You Have Selected water
+Total Price £1.20
+> OfficeVendingMachine.Insert(new Coin(50));
+You Have Inserted £0.50
+Total Paid £0.50
+Total Price £1.20
+Please Insert more coins To Complete purchase
+> OfficeVendingMachine.Insert(new Coin(50));
+You Have Inserted £0.50
+Total Paid £1.00
+Total Price £1.20
+Please Insert more coins To Complete purchase
+> OfficeVendingMachine.Insert(new Coin(50));
+You Have Inserted £0.50
+Total Paid £1.50
+Total Price £1.20
+Your Items(s):
+2x water
+Your Change: £0.30
+```
