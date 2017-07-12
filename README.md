@@ -63,3 +63,5 @@ Your Items(s):
 2x water
 Your Change: £0.30
 ```
+## Improvements
+There are 2 more possible class extractions from VendingMachine. I could extract an ItemManager class to be solely responsible for managing Items and also Display class to be responsible for displaying output to screen. This would also make unit testing easier. 
