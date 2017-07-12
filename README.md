@@ -68,4 +68,4 @@ There are 2 more possible class extractions from VendingMachine. I could extract
 
 There are some edge cases that need fixing, at the moment if there is no change available there isn't a way for user to know about it, adding this functionality would be a major improvement.
 
-I have left some function open to extension for future improvements. For example the 'IsValid' function in 'CoinManager' has been intentionally coded to iterate through an array of valid coins instead of a fixed coin. This would mean that you could easily add another acceptable coin for the machine.
+I have left some function open to extension for future improvements. For example the `IsValid` function in `CoinManager` has been intentionally coded to iterate through an array of valid coins instead of a fixed coin. This would mean that you could easily add another acceptable coin for the machine.
